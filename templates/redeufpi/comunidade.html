@@ -1,24 +1,22 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="pt br">
 <head>
   <meta charset="UTF-8">
   <title>Rede UFPI - Comunidade {{comunidade.nome}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/telainicial.css' %}">
+  <link rel="stylesheet" href="static/css/telainicial.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <body>
     <header>
       <div class="wraper-header">
         <div class="logo">
-          <img src="{% static 'img/ufpi-icone1.png' %}" alt="ufpi-icone1">
+          <img src="static/img/ufpi-icone1.png" alt="ufpi-icone1">
         </div>
         <div class="home-btn">
           <p>
             <span>
-              <a href="{% url 'home-page' %}"><i class="fa-solid fa-house"></i></a>
+              <a href="home-page.html"><i class="fa-solid fa-house"></i></a>
               <p class="palavra">Home <i class="fa-solid fa-arrow-right"></i> {{comunidade.nome}}
             </span></p>
           </p>
@@ -28,9 +26,9 @@
           <input type="text" placeholder="Procurar na '{{comunidade.nome}}'">
         </div>
         <div class="notifications">
-          <a href="{% url 'comunidades' %}"><i class="fa-solid fa-comment"></i></a>
+          <a href="comunidades.html"><i class="fa-solid fa-comment"></i></a>
           <a href="/redeufpi/perfil/{{user.username}}"><i class="fa-solid fa-user"></i></a>
-          <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+          <a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </div>
       </div>
     </header>
@@ -55,15 +53,15 @@
 
         <div class="posts">
           <div class="postBox">
-            {% for message in messages %}
+           
                 <div class="messages">
                   <div class="alert alert-{{ message.tags }}">
                     <p>{{ message }}</p>
                   </div>
                 </div>
-            {% endfor %}
+           
             <form action="{{comunidade.nome}}/criar-post" method="POST">
-                {% csrf_token %}
+                
                 <div class="postbox__input">
                     <input type="text" name = "conteudo" placeholder="Criar post"/>
                     <button class="postBox__postButton">Post</button>
@@ -71,8 +69,8 @@
             </form>
           </div>
           <br>
-          {% for post in posts %}
-          <a href="post/{{post.id}}" class="post-page">
+         
+          <a href="post.html" class="post-page">
           <div class="post-single">
             <div class="post-content">
               <div class="post-content-text">
@@ -81,37 +79,25 @@
               </div>
             </div>
           </div>
-          {% endfor %}
+  
           
         </div>
         <div class="sidebar">
           <div class="comunidades">
             <h2>Comunidades</h2>
             <div class="comunidade-container">
-            {% if comunidades %}
-              {% for comunidade in comunidades %}
+           
                 <div class="comunidade-single">
                   <p>{{ comunidade.nome }}</p>
                   <p><button><a href="{{comunidade.nome}}">Entrar</a></button></p>
                 </div>
-              {% endfor %}
-            {% else %}
-              <p>Nenhuma comunidade encontrada</p>
-            {% endif %}
+    
           </div>
-            <p><button class="view-all"><a href="{% url 'comunidades' %}">Ver todos</a></button></p>
+            <p><button class="view-all"><a href="comunidades.html">Ver todos</a></button></p>
           </div>
         </div>
       </div>
     </section>
-    {% if error_message %}
-    <script>
-    window.onload = function() {
-        if ('{{ error_message }}'.trim() !== '') {
-            alert('{{ error_message }}');
-        }
-    };
-    </script>
-    {% endif %}
+    
   </body>
   </html>

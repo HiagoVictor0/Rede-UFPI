@@ -1,10 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/telainicial.css' %}">
+  <link rel="stylesheet" href="static/css/telainicial.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>Rede UFPI - Home</title>
 </head>
@@ -12,12 +11,12 @@
     <header>
       <div class="wraper-header">
         <div class="logo">
-          <img src="{% static 'img/ufpi-icone1.png' %}" alt="ufpi-icone1">
+          <img src="static/img/ufpi-icone1.png" alt="ufpi-icone1">
         </div>
         <div class="home-btn">
           <p>
             <span>
-              <a href="{% url 'home-page' %}"><i class="fa-solid fa-house"></i></a> <p class="palavra">Home</p></a>
+              <a href="home-page.html"><i class="fa-solid fa-house"></i></a> <p class="palavra">Home</p></a>
             </span>
           </p>
           <p>
@@ -29,7 +28,7 @@
         <div class="notifications">
           <i class="fa-solid fa-comment"></i>
           <a href="perfil/{{user.username}}"><i class="fa-solid fa-user"></i>
-          <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+          <a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </div>
       </div>
     </header>
@@ -38,53 +37,20 @@
         <div class="todas-comunidades"> 
             <h2>Comunidades</h2>
             <div class="comunidades-container">
-                {% if comunidades is not None %}
-                    {% for comunidade in comunidades %}
+               
                         <div class="comunidade-single">
                             <p>{{ comunidade.nome }}</p>
-                            <p><button><a href="comunidade/{{comunidade.nome}}">Entrar</a></button></p>
+                            <p><button><a href="comunidade.html">Entrar</a></button></p>
                         </div>
-                    {% endfor %}
+                    
                 </div>
-                <p><button class="voltar"><a href="{% url 'criar-comunidade' %}">Criar Comunidade</a></button></p>
-
-                {% else %}
-                    <p>Nenhuma comunidade encontrada</p>
-                {% endif %}
+                <p><button class="voltar"><a href="criar-comunidade.html">Criar Comunidade</a></button></p>
                 
                 <div class="topicos-celular">
                   <h2>Tópicos</h2>
                   <div class="topico-container">
                       <div class="topico-single">
-                        <a href="https://www.instagram.com/alunoufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> alunoufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
-                        
-                      </div>
-                      <div class="topico-single">
-                        <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
+                        <a href="https://www.instagram.com/alunoufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> alunoufpi (instagram)</a>                 
                         
                       </div>
                       

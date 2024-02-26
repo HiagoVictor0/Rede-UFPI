@@ -1,11 +1,9 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+  <link rel="stylesheet" href="static/css/cadastro.css">
   <title>Rede UFPI - Cadastro</title>
 </head>
 <body>
@@ -15,8 +13,6 @@
 <div class="container">
     <div class="login-container">
         <h2>Cadastro</h2>
-        <form action="{% url 'cadastro' %}" method="POST">
-          {% csrf_token %}
           <div class="input-group">
             <label for="nome"> Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required/>
@@ -38,8 +34,8 @@
                 <input type="password" id="senha" name="senha" placeholder="Crie uma senha"/>
             </div>
             <div class="input-group">
-                <a href="{% url 'login' %}" class="tem-conta">Ja tenho conta...</a>
-                <button type="submit">Cadastrar</button>
+                <a href="login.html" class="tem-conta">Ja tenho conta...</a>
+                <a href="login.html"><button type="submit">Cadastrar</button></a>
         </div>
         </form>
 </div>

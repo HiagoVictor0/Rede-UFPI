@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do usuário</title>
-    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+    <link rel="stylesheet" href="static/css/perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -16,12 +14,12 @@
     <header>
         <div class="wraper-header">
             <div class="logo">
-                <img src="{% static 'img/ufpi-icone1.png' %}" alt="ufpi-icone1">
+                <img src="static/img/ufpi-icone1.png" alt="ufpi-icone1">
             </div>
             <div class="home-btn">
                 <p>
                     <span>
-                        <a href="{% url 'home-page' %}"><i class="fa-solid fa-house"></i></a>
+                        <a href="home-page.html"><i class="fa-solid fa-house"></i></a>
                         <p class="palavra">Home <i class="fa-solid fa-arrow-right"></i> Perfil
                     </span></p>
                 </p>
@@ -35,7 +33,7 @@
             <div class="notifications">
                 <i class="fa-solid fa-comment"></i>
                 <a href="perfil/{{user.username}}"><i class="fa-solid fa-user"></i>
-                <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <a href="login.html"fa-solid fa-arrow-right-from-bracket"></i></a>
             </div>
         </div>
     </header>

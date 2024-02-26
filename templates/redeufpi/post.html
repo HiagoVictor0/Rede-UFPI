@@ -1,11 +1,10 @@
-{% load static %}
 
 <!DOCTYPE html>
 <html lang="pt br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/post.css' %}">
+  <link rel="stylesheet" href="static/css/post.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>Rede UFPI - Post {{post.id}}</title>
 </head>
@@ -13,12 +12,12 @@
     <header>
       <div class="wraper-header">
         <div class="logo">
-          <img src="{% static 'img/ufpi-icone1.png' %}" alt="ufpi-icone1">
+          <img src="static/img/ufpi-icone1.png" alt="ufpi-icone1">
         </div>
         <div class="home-btn">
           <p>
             <span>
-              <a href="{% url 'home-page' %}"><i class="fa-solid fa-house"></i></a>
+              <a href="home-page.html"><i class="fa-solid fa-house"></i></a>
               <p class="palavra">Home <i class="fa-solid fa-arrow-right"></i> {{post.id}}</p>
             </span>
           </p>
@@ -31,7 +30,7 @@
         <div class="notifications">
           <i class="fa-solid fa-comment"></i>
           <a href="/redeufpi/perfil/{{user.username}}"><i class="fa-solid fa-user"></i>
-          <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+          <a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </div>
       </div>
     </header>
@@ -48,7 +47,7 @@
         <br>
         <div class="postBox">
           <form method="post" action="{% url 'criar_comentario_main' post.id %}">
-            {% csrf_token %}
+   
             <div class="postbox__input">
                 <input type="text" name="conteudo" placeholder="Comentar"/>
                 <button type="submit" class="postBox__postButton">Comentar</button>
@@ -56,19 +55,9 @@
         </form>
       </div>
         <br>
-        <!-- Add this structure around your comment section -->
+   
     <div class="comments-container">
-      <!-- Your comment sections go here -->
-      {% for comment in comments %}
-          <div class="coment-single">
-              <div class="coment-content">
-                  <div class="coment-content-text">
-                      <p><i class="fa-solid fa-user"></i> <b>{{ comment.user.first_name }} {{ comment.user.last_name }}</b> Postado no dia {{ comment.data|date:"d/m/Y H:i" }}</p>
-                      <h3>{{ comment.conteudo }}</h3>
-                  </div>
-              </div>
-          </div>
-      {% endfor %}
+
   </div>
 
   </div>
