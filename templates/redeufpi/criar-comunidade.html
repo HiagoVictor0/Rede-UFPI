@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/criar-comunidade.css' %}">
+  <title>Rede UFPI - Criar Comunidade</title>
+</head>
+<body>
+<div class="site">
+    <h1>Rede UFPI</h1>
+</div>
+<div class="container">
+    <div class="criar-comunidade-container">
+        <h2>Criar Comunidade</h2>
+        <form action="{% url 'criar-comunidade' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+              <label for="nome-comunidade">Nome:</label>
+              <input type="nome-comunidade" id="nome-comunidade" name="nome-comunidade" placeholder="Digite o nome da comunidade" required/>
+            </div>
+            <a href="{% url 'home-page' %}" class="tem-comunidade">Não quero criar uma comunidade...</a>
+            <button type="submit">Criar</button>
+        </form>
+    </div>
+</div>
+{% if error_message %}
+<script>
+window.onload = function() {
+    if ('{{ error_message }}'.trim() !== '') {
+        alert('{{ error_message }}');
+    }
+};
+</script>
+{% endif %}
+</body>
+</html>

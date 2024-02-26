@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+  <title>Rede UFPI - Cadastro</title>
+</head>
+<body>
+  <div class="site">
+    <h1>Rede UFPI</h1>
+</div>
+<div class="container">
+    <div class="login-container">
+        <h2>Cadastro</h2>
+        <form action="{% url 'cadastro' %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group">
+            <label for="nome"> Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required/>
+          </div>
+          <div class="input-group">
+            <label for="sobrenome"> Sobrenome:</label>
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" required/>
+          </div>
+          <div class="input-group">
+              <label for="matricula"> Matricula:</label>
+              <input type="text" id="matricula" name="matricula" placeholder="Digite seu número de matricula" required/>
+          </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email"/>
+            </div>
+            <div class="input-group">
+                <label for="senha"> Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Crie uma senha"/>
+            </div>
+            <div class="input-group">
+                <a href="{% url 'login' %}" class="tem-conta">Ja tenho conta...</a>
+                <button type="submit">Cadastrar</button>
+        </div>
+        </form>
+</div>
+</body>
+</html>

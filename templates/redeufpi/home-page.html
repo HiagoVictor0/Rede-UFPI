@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/telainicial.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Rede UFPI - Home</title>
+</head>
+<body>
+    <header>
+      <div class="wraper-header">
+        <div class="logo">
+          <img src="{% static 'img/ufpi-icone1.png' %}" alt="ufpi-icone1">
+        </div>
+        <div class="home-btn">
+          <p>
+            <span>
+              <i class="fa-solid fa-house"></i><p class="palavra">Home</p>
+            </span>
+          </p>
+          <p>
+          </p>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="Procurar...">
+        </div>
+        <div class="notifications">
+          <a href="{% url 'comunidades' %}"><i class="fa-solid fa-comment"></i></a>
+          <a href="perfil/{{user.username}}"><i class="fa-solid fa-user"></i>
+          <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </div>
+      </div>
+    </header>
+    <br>
+    <section class="main">
+      <div class="wraper-main">
+
+          <div class="topicos">
+            <h2>Tópicos</h2>
+            <div class="topico-container">
+                <div class="topico-single">
+                  <a href="https://www.instagram.com/alunoufpi/" target="_blank"><p><i class="fa-brands fa-instagram"></i> alunoufpi (instagram)</p></a>
+                  
+                </div>
+                <div class="topico-single">
+                  <a href="https://www.instagram.com/casi.ufpi/" target="_blank"><i class="fa-brands fa-instagram"></i> casi.ufpi (instagram)</a>
+                  
+                </div>
+                
+              </div>
+              <button class="criar-topico">Criar um topico</button>
+          </div>
+         
+        <div class="posts">
+          <div class="postBox">
+              {% for message in messages %}
+                <div class="messages">
+                  <div class="alert alert-{{ message.tags }}">
+                    <p>{{ message }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+              <form action="{% url 'post' %}" method="POST">
+                  {% csrf_token %}
+                  <div class="postbox__input">
+                      <input type="text" name = "conteudo" placeholder="Criar post"/>
+                      <button class="postBox__postButton">Post</button>
+                  </div>
+              </form>
+          </div>
+          <br>
+          {% for post in posts %}
+          <a href="post/{{post.id}}" class="post-page"><!--Colocar caminho para tela do post-->
+            <div class="post-single">
+              <div class="post-content">
+                <div class="post-content-text">
+                  <p><i class="fa-solid fa-user"></i><!--Exemplo de onde fica a foto--> <b>{{post.user.first_name}} {{post.user.last_name}}</b>  Postado dia {{ post.data|date:"d/m/Y H:i" }}</p>
+                  <h3>{{post.conteudo}}</h3>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          
+        </div>
+        <div class="sidebar">
+          <div class="comunidades"> 
+            <h2>Comunidades</h2>
+            <div class="comunidade-container">
+              {% if comunidades %}
+                {% for comunidade in comunidades %}
+                <div class="comunidade-single">
+                  <p>{{ comunidade.nome }}</p>
+                  <p><button><a href="comunidade/{{comunidade.nome}}">Entrar</a></button></p>
+                </div>
+                {% endfor %}
+              {% else %}
+                <p>Não há nenhuma comunidade</p>
+              {% endif %}
+            </div>
+            <a href="{% url 'criar-comunidade' %}"><button class="view-all">Criar Comunidade</button></a>
+            <a href="{% url 'comunidades' %}"><button class="view-all">Ver todos</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% if error_message %}
+    <script>
+    window.onload = function() {
+        if ('{{ error_message }}'.trim() !== '') {
+            alert('{{ error_message }}');
+        }
+    };
+    </script>
+    {% endif %}
+  </body>
+  </html>
